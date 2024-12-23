@@ -12,11 +12,18 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//        http
+//                .authorizeHttpRequests(authorize -> authorize
+//                        .anyRequest().authenticated()
+//                )
+//                .oauth2Login(Customizer.withDefaults());
+//        ;
+
         http
                 .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/").permitAll()
-                .anyRequest().authenticated()
-        );
+                        .requestMatchers("/").permitAll()
+                        .anyRequest().authenticated()
+                );
 
         return http.build();
 
