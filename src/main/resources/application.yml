@@ -14,5 +14,4 @@ okta:
 #    issuer: "https://dev-a8l41vebd88acxr6.us.auth0.com/"
 #    client-id: "ENC(j8pu2rZolwphf6XmQ6EFvJn5NQ0GG564bXs3YxeXTqvqsKzWhRYlCU5Rp3KvQMV3)"
 #    client-secret: "ENC(h01gNEaXbHO0ObrzXkgcaohhIS6rUCUH+Pexxr2glP0/p7AXosEZC0KYFoQBC5tackGxGSbHU/hJVkjPcHSdaxypXoYV46LlAtF2WeLifMs=)"
-#    redirect-uri: "http://10.28.3.180:8090"
 
