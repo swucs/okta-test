@@ -30,12 +30,13 @@
         profileDiv = document.querySelector('#profile');
 
         auth0Client = await createAuth0Client({
-            // domain: "dev-gpbeh1okvt78qecy.us.auth0.com",
-            // client_id: "1Wsc2GmRkwbUUitRIYXXWATgu2Ynuu2p",
-            // redirect_uri: "http://localhost:8099"
-            domain: "dev-a8l41vebd88acxr6.us.auth0.com",
-            client_id: "DXGT2rOtQI2ighN4bByHz8dCio72E6da",
-            redirect_uri: "https://evcar-tms.obigo.com//"
+            domain: "dev-gpbeh1okvt78qecy.us.auth0.com",
+            client_id: "1Wsc2GmRkwbUUitRIYXXWATgu2Ynuu2p",
+            redirect_uri: "http://localhost:8099"
+
+            // domain: "dev-a8l41vebd88acxr6.us.auth0.com",
+            // client_id: "DXGT2rOtQI2ighN4bByHz8dCio72E6da",
+            // redirect_uri: "https://evcar-tms.obigo.com"
         });
 
         // handle coming back from login
