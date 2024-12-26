@@ -11,7 +11,6 @@ okta:
     issuer: "https://dev-gpbeh1okvt78qecy.us.auth0.com/"
     client-id: "ENC(51g/CSqmsq98Mlh46puMy3/0MqdEl/irPDrgTcdP15zaVMfEV1n4a+qFS/3rbiqy)"
     client-secret: "ENC(BZaQgeqfvf/w5GmYc0Ra+cM95x4vKQCYOId3ERkfWwQ/YCPDKph1h4JULyFZ9D9Dn5Gn3/AHHgG4IFWM4ZER0d/gACn99sKwzX1nz7J12Qs=)"
-    redirect-uri: "http://localhost:8099"
 #    issuer: "https://dev-a8l41vebd88acxr6.us.auth0.com/"
 #    client-id: "ENC(j8pu2rZolwphf6XmQ6EFvJn5NQ0GG564bXs3YxeXTqvqsKzWhRYlCU5Rp3KvQMV3)"
 #    client-secret: "ENC(h01gNEaXbHO0ObrzXkgcaohhIS6rUCUH+Pexxr2glP0/p7AXosEZC0KYFoQBC5tackGxGSbHU/hJVkjPcHSdaxypXoYV46LlAtF2WeLifMs=)"
