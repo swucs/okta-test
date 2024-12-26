@@ -22,8 +22,6 @@
     let loginBtn, logoutBtn, profileDiv;
     let auth0Client;
 
-    alert(window.location.origin);
-
     document.addEventListener('DOMContentLoaded', init, false);
 
     async function init() {
@@ -34,18 +32,20 @@
         auth0Client = await createAuth0Client({
             // domain: "dev-gpbeh1okvt78qecy.us.auth0.com",
             // client_id: "1Wsc2GmRkwbUUitRIYXXWATgu2Ynuu2p",
-            // redirect_uri: "http://10.28.3.180:8090/login/oauth2/code/okta"
+            // redirect_uri: "http://localhost:8099"
             domain: "dev-a8l41vebd88acxr6.us.auth0.com",
             client_id: "DXGT2rOtQI2ighN4bByHz8dCio72E6da",
-            redirect_uri: "http://10.28.3.180:8090/login/oauth2/code/okta"
+            redirect_uri: "http://10.28.3.180:8090/"
         });
 
         // handle coming back from login
         if (location.search.includes("state=") &&
             (location.search.includes("code=") ||
                 location.search.includes("error="))) {
+
+            console.log('handleRedirectCallback');
             await auth0Client.handleRedirectCallback();
-            window.history.replaceState({}, document.title, "/");
+            // window.history.replaceState({}, document.title, "/");
         }
 
         const isAuthenticated = await auth0Client.isAuthenticated();
@@ -55,6 +55,8 @@
         else {
             logoutBtn.style.display = null;
             const userProfile = await auth0Client.getUser();
+
+            console.log('userProfile', userProfile);
             profileDiv.innerHTML = `<h2>Profile</h2><pre>${JSON.stringify(userProfile,null,'\t')}</pre></div>.<p><img src="${userProfile.picture}" /></p>`;
             profileDiv.style.display = '';
         }

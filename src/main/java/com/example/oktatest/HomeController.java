@@ -28,6 +28,8 @@ public class HomeController {
             System.out.println("oidcUser.getIdToken().getTokenValue() = " + oidcUser.getIdToken().getTokenValue());
             System.out.println("oidcUser.getEmail() = " + oidcUser.getEmail());
             System.out.println("oidcUser.getFullName() = " + oidcUser.getFullName());
+
+            model.addAttribute("accessToken", oidcUser.getAccessTokenHash());
         }
         return "index";
     }
