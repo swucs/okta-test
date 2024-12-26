@@ -1,12 +1,76 @@
-<!-- src/main/resources/templates/index.html -->
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Simple Demo is Simple</title>
+    <style>
+    </style>
+
+</head>
 <body>
 
-<div sec:authorize="!isAuthenticated()">
-    <a th:href="@{/oauth2/authorization/okta}">Log In</a>
-</div>
-<div sec:authorize="isAuthenticated()">
-    <p>You are logged in!</p>
-</div>
+<h1>Simple Demo is Simple</h1>
+
+<button id="login" style="display:none">Login</button>
+<button id="logout" style="display:none">Logout</button>
+<div id="profile" style="display:none"></div>
+
+<script src="https://cdn.auth0.com/js/auth0-spa-js/1.20/auth0-spa-js.production.js"></script>
+<script th:inline="javascript">
+
+    let loginBtn, logoutBtn, profileDiv;
+    let auth0Client;
+
+    alert(window.location.origin);
+
+    document.addEventListener('DOMContentLoaded', init, false);
+
+    async function init() {
+        loginBtn = document.querySelector('#login');
+        logoutBtn = document.querySelector('#logout');
+        profileDiv = document.querySelector('#profile');
+
+        auth0Client = await createAuth0Client({
+            // domain: "dev-gpbeh1okvt78qecy.us.auth0.com",
+            // client_id: "1Wsc2GmRkwbUUitRIYXXWATgu2Ynuu2p",
+            // redirect_uri: "http://10.28.3.180:8090/login/oauth2/code/okta"
+            domain: "dev-a8l41vebd88acxr6.us.auth0.com",
+            client_id: "DXGT2rOtQI2ighN4bByHz8dCio72E6da",
+            redirect_uri: "http://10.28.3.180:8090/login/oauth2/code/okta"
+        });
+
+        // handle coming back from login
+        if (location.search.includes("state=") &&
+            (location.search.includes("code=") ||
+                location.search.includes("error="))) {
+            await auth0Client.handleRedirectCallback();
+            window.history.replaceState({}, document.title, "/");
+        }
+
+        const isAuthenticated = await auth0Client.isAuthenticated();
+        console.log('isAuthenticated', isAuthenticated);
+
+        if(!isAuthenticated) loginBtn.style.display = '';
+        else {
+            logoutBtn.style.display = null;
+            const userProfile = await auth0Client.getUser();
+            profileDiv.innerHTML = `<h2>Profile</h2><pre>${JSON.stringify(userProfile,null,'\t')}</pre></div>.<p><img src="${userProfile.picture}" /></p>`;
+            profileDiv.style.display = '';
+        }
+
+        loginBtn.addEventListener("click", e => {
+            e.preventDefault();
+            auth0Client.loginWithRedirect();
+        });
+
+        logoutBtn.addEventListener("click", e => {
+            e.preventDefault();
+            auth0Client.logout();
+        });
+
+    }
+</script>
 </body>
+
 </html>
