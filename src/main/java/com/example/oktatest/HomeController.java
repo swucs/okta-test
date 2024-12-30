@@ -23,4 +23,20 @@ public class HomeController {
         }
         return "index";
     }
+
+
+    @GetMapping(value = "/index2")
+    public String index2(Model model, @AuthenticationPrincipal final OidcUser oidcUser) {
+
+        if (oidcUser != null) {
+
+            System.out.println("oidcUser.getAccessTokenHash() = " + oidcUser.getAccessTokenHash());
+            System.out.println("oidcUser.getIdToken().getTokenValue() = " + oidcUser.getIdToken().getTokenValue());
+            System.out.println("oidcUser.getEmail() = " + oidcUser.getEmail());
+            System.out.println("oidcUser.getFullName() = " + oidcUser.getFullName());
+
+            model.addAttribute("accessToken", oidcUser.getAccessTokenHash());
+        }
+        return "index2";
+    }
 }
