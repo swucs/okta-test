@@ -23,6 +23,7 @@
 
 <script src="https://cdn.auth0.com/js/auth0-spa-js/1.20/auth0-spa-js.production.js"></script>
 <script th:inline="javascript">
+    /*<![CDATA[*/
 
     let login1Btn, logout1Btn, profile1Div;
     let login2Btn, logout2Btn, profile2Div;
@@ -42,17 +43,16 @@
         profile2Div = document.querySelector('#profile2');
 
         auth0Client1 = await createAuth0Client({
-
-            domain: /*[[${toyotaDomain}]]*/ "",
-            client_id: /*[[${toyotaClientId}]]*/ "",
-            redirect_uri: /*[[${toyotaRedirectUri}]]*/ ""
+            domain: "[(@{ ${toyotaDomain} })]",
+            client_id: "[(@{ ${toyotaClientId} })]",
+            redirect_uri: "[(@{ ${toyotaRedirectUri} })]"
         });
 
 
         auth0Client2 = await createAuth0Client({
-            domain: /*[[${lexusDomain}]]*/ "",
-            client_id: /*[[${lexusClientId}]]*/ "",
-            redirect_uri: /*[[${lexusRedirectUri}]]*/ ""
+            domain: "[(@{ ${lexusDomain} })]",
+            client_id: "[(@{ ${lexusClientId} })]",
+            redirect_uri: "[(@{ ${lexusRedirectUri} })]"
         });
 
         // handle coming back from login
@@ -124,6 +124,7 @@
         });
 
     }
+    /*]]>*/
 </script>
 </body>
 
