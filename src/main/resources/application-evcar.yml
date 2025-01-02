@@ -3,15 +3,15 @@ spring:
     name: okta-test
 
 server:
-  port: 8090
+  port: 8099
 
 
 auth0:
   toyota:
     domain: "toyota-dev.us.auth0.com"
     client-id: "xG7VV1sJg2mItxpaAH3zA5EYfhYOB5wZ"
-    redirect-uri: "http://10.28.3.180:8090/?mode=toyota"
+    redirect-uri: "https://evcar-tms.obigo.com/?mode=toyota"
   lexus:
     domain: "lexus-dev.us.auth0.com"
     client-id: "SZJyV7c4P1jOvaQlI4sBkLgCxudE0IKw"
-    redirect-uri: "http://10.28.3.180:8090/?mode=lexus"
+    redirect-uri: "https://evcar-tms.obigo.com/?mode=lexus"

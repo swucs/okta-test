@@ -12,33 +12,47 @@
 
 <h1>Simple Demo is Simple</h1>
 
-<button id="login" style="display:none">Login</button>
-<button id="logout" style="display:none">Logout</button>
-<div id="profile" style="display:none"></div>
+<button id="login1" style="">도요타 Login</button>
+<button id="logout1" style="">도요타 Logout</button>
+<div id="profile1" style="display:none"></div>
+
+
+<button id="login2" style="">렉서스 Login</button>
+<button id="logout2" style="">렉서스 Logout</button>
+<div id="profile2" style="display:none"></div>
 
 <script src="https://cdn.auth0.com/js/auth0-spa-js/1.20/auth0-spa-js.production.js"></script>
 <script th:inline="javascript">
 
-    let loginBtn, logoutBtn, profileDiv;
-    let auth0Client;
+    let login1Btn, logout1Btn, profile1Div;
+    let login2Btn, logout2Btn, profile2Div;
+    let auth0Client1;
+    let auth0Client2;
 
     document.addEventListener('DOMContentLoaded', init, false);
 
     async function init() {
-        loginBtn = document.querySelector('#login');
-        logoutBtn = document.querySelector('#logout');
-        profileDiv = document.querySelector('#profile');
+        login1Btn = document.querySelector('#login1');
+        logout1Btn = document.querySelector('#logout1');
+        profile1Div = document.querySelector('#profile1');
 
-        auth0Client = await createAuth0Client({
-            // hannah
-            // domain: "dev-gpbeh1okvt78qecy.us.auth0.com",
-            // client_id: "1Wsc2GmRkwbUUitRIYXXWATgu2Ynuu2p",
-            // redirect_uri: "http://10.28.3.180:8099"
 
-            // colin
-            domain: "dev-a8l41vebd88acxr6.us.auth0.com",
-            client_id: "DXGT2rOtQI2ighN4bByHz8dCio72E6da",
-            redirect_uri: "https://evcar-tms.obigo.com"
+        login2Btn = document.querySelector('#login2');
+        logout2Btn = document.querySelector('#logout2');
+        profile2Div = document.querySelector('#profile2');
+
+        auth0Client1 = await createAuth0Client({
+
+            domain: /*[[${toyotaDomain}]]*/ "",
+            client_id: /*[[${toyotaClientId}]]*/ "",
+            redirect_uri: /*[[${toyotaRedirectUri}]]*/ ""
+        });
+
+
+        auth0Client2 = await createAuth0Client({
+            domain: /*[[${lexusDomain}]]*/ "",
+            client_id: /*[[${lexusClientId}]]*/ "",
+            redirect_uri: /*[[${lexusRedirectUri}]]*/ ""
         });
 
         // handle coming back from login
@@ -46,32 +60,67 @@
             (location.search.includes("code=") ||
                 location.search.includes("error="))) {
 
-            console.log('handleRedirectCallback');
-            await auth0Client.handleRedirectCallback();
-            // window.history.replaceState({}, document.title, "/");
+            urlSearch = new URLSearchParams(location.search);
+            mode = urlSearch.get('mode')
+
+
+            console.log('handleRedirectCallback : ', mode);
+            if (mode === 'toyota') {
+                await auth0Client1.handleRedirectCallback();
+            } else {
+                await auth0Client2.handleRedirectCallback();
+            }
+            window.history.replaceState({}, document.title, "/");
         }
 
-        const isAuthenticated = await auth0Client.isAuthenticated();
-        console.log('isAuthenticated', isAuthenticated);
+        const isAuthenticated1 = await auth0Client1.isAuthenticated();
+        const isAuthenticated2 = await auth0Client2.isAuthenticated();
+        console.log('isAuthenticated1', isAuthenticated1);
+        console.log('isAuthenticated2', isAuthenticated2);
 
-        if(!isAuthenticated) loginBtn.style.display = '';
-        else {
-            logoutBtn.style.display = null;
-            const userProfile = await auth0Client.getUser();
+        if(!isAuthenticated1) {
+            login1Btn.style.display = '';
+        } else {
+            logout1Btn.style.display = null;
+            const userProfile = await auth0Client1.getUser();
+            const accessToken = await auth0Client1.getTokenSilently();
 
-            console.log('userProfile', userProfile);
-            profileDiv.innerHTML = `<h2>Profile</h2><pre>${JSON.stringify(userProfile,null,'\t')}</pre></div>.<p><img src="${userProfile.picture}" /></p>`;
-            profileDiv.style.display = '';
+            console.log('userProfile1', userProfile);
+            profile1Div.innerHTML = `<h2>Toyota Profile</h2><p>${accessToken}</p><pre>${JSON.stringify(userProfile,null,'\t')}</pre></div>.<p><img src="${userProfile.picture}" /></p>`;
+            profile1Div.style.display = '';
         }
 
-        loginBtn.addEventListener("click", e => {
+
+        if(!isAuthenticated2) {
+            login2Btn.style.display = '';
+        } else {
+            login2Btn.style.display = null;
+            const userProfile = await auth0Client2.getUser();
+            const accessToken = await auth0Client2.getTokenSilently();
+
+            console.log('userProfile2', userProfile);
+            profile2Div.innerHTML = `<h2>Lexus Profile</h2><p>${accessToken}</p><pre>${JSON.stringify(userProfile,null,'\t')}</pre></div>.<p><img src="${userProfile.picture}" /></p>`;
+            profile2Div.style.display = '';
+        }
+
+        login1Btn.addEventListener("click", e => {
             e.preventDefault();
-            auth0Client.loginWithRedirect();
+            auth0Client1.loginWithRedirect();
         });
 
-        logoutBtn.addEventListener("click", e => {
+        login2Btn.addEventListener("click", e => {
             e.preventDefault();
-            auth0Client.logout();
+            auth0Client2.loginWithRedirect();
+        });
+
+        logout1Btn.addEventListener("click", e => {
+            e.preventDefault();
+            auth0Client1.logout();
+        });
+
+        logout2Btn.addEventListener("click", e => {
+            e.preventDefault();
+            auth0Client2.logout();
         });
 
     }
