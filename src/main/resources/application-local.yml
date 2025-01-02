@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: okta-test
+
+server:
+  port: 8099
+
+
+auth0:
+  toyota:
+    domain: "toyota-dev.us.auth0.com"
+    client-id: "xG7VV1sJg2mItxpaAH3zA5EYfhYOB5wZ"
+    redirect-uri: "http://localhost:8099"
+  lexus:
+    domain: "lexus-dev.us.auth0.com"
+    client-id: "SZJyV7c4P1jOvaQlI4sBkLgCxudE0IKw"
+    redirect-uri: "http://localhost:8099"
