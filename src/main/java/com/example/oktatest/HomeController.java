@@ -17,6 +17,9 @@ public class HomeController {
     @Value("${auth0.toyota.redirect-uri}")
     private String toyotaRedirectUri;
 
+    @Value("${auth0.toyota.audience}")
+    private String toyotaAudience;
+
     @Value("${auth0.lexus.domain}")
     private String lexusDomain;
 
@@ -26,6 +29,9 @@ public class HomeController {
     @Value("${auth0.lexus.redirect-uri}")
     private String lexusRedirectUri;
 
+    @Value("${auth0.lexus.audience}")
+    private String lexusAudience;
+
 
 
     @GetMapping(value = "/")
@@ -33,9 +39,11 @@ public class HomeController {
         model.addAttribute("toyotaDomain", toyotaDomain);
         model.addAttribute("toyotaClientId", toyotaClientId);
         model.addAttribute("toyotaRedirectUri", toyotaRedirectUri);
+        model.addAttribute("toyotaAudience", toyotaAudience);
         model.addAttribute("lexusDomain", lexusDomain);
         model.addAttribute("lexusClientId", lexusClientId);
         model.addAttribute("lexusRedirectUri", lexusRedirectUri);
+        model.addAttribute("lexusAudience", lexusAudience);
 
         return "index";
     }

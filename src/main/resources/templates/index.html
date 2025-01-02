@@ -45,14 +45,16 @@
         auth0Client1 = await createAuth0Client({
             domain: "[(@{ ${toyotaDomain} })]",
             client_id: "[(@{ ${toyotaClientId} })]",
-            redirect_uri: "[(@{ ${toyotaRedirectUri} })]"
+            redirect_uri: "[(@{ ${toyotaRedirectUri} })]",
+            audience: "[(@{ ${toyotaAudience} })]"
         });
 
 
         auth0Client2 = await createAuth0Client({
             domain: "[(@{ ${lexusDomain} })]",
             client_id: "[(@{ ${lexusClientId} })]",
-            redirect_uri: "[(@{ ${lexusRedirectUri} })]"
+            redirect_uri: "[(@{ ${lexusRedirectUri} })]",
+            audience: "[(@{ ${lexusAudience} })]"
         });
 
         // handle coming back from login
