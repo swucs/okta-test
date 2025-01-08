@@ -72,7 +72,7 @@
             } else {
                 await auth0Client2.handleRedirectCallback();
             }
-            window.history.replaceState({}, document.title, "/");
+            // window.history.replaceState({}, document.title, "/");
         }
 
         const isAuthenticated1 = await auth0Client1.isAuthenticated();
