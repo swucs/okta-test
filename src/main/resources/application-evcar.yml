@@ -8,12 +8,12 @@ server:
 
 auth0:
   toyota:
-    domain: "toyota-kr-dev.jp.auth0.com"
+    domain: "auth-dev.toyotaconnectapp.com"
     client-id: "2ZLCaqHKeNXqzqDHHxcq5mPAGdA7cbzU"
     redirect-uri: "https://evcar-tms.obigo.com/?mode=toyota"
     audience: "https://24dcm-dev-tmcif.tmkr-connected.com"
   lexus:
-    domain: "lexus-kr-dev.jp.auth0.com"
+    domain: "auth-dev.lexusconnectapp.com"
     client-id: "Fn0xeEDTGVebPtbqfEJQ8l1m2HTkQHjS"
     redirect-uri: "https://evcar-tms.obigo.com/?mode=lexus"
     audience: "https://24dcm-dev-tmcif.tmkr-connected.com"

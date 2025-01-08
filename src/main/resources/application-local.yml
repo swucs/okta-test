@@ -8,12 +8,12 @@ server:
 
 auth0:
   toyota:
-    domain: "toyota-kr-dev.jp.auth0.com"
-    client-id: "2ZLCaqHKeNXqzqDHHxcq5mPAGdA7cbzU"
+    domain: "toyota-kr-test.us.auth0.com"
+    client-id: "Edwip0uwJvMZaZTDYlGqQl7S815AuZQK"
     redirect-uri: "http://localhost:8099/?mode=toyota"
     audience: "https://24dcm-dev-tmcif.tmkr-connected.com"
   lexus:
-    domain: "lexus-kr-dev.jp.auth0.com"
-    client-id: "Fn0xeEDTGVebPtbqfEJQ8l1m2HTkQHjS"
+    domain: "lexus-kr-test.us.auth0.com"
+    client-id: "xKrsdYuvlq4sSvZAy6LB1RKF9EZSx6tB"
     redirect-uri: "http://localhost:8099/?mode=lexus"
     audience: "https://24dcm-dev-tmcif.tmkr-connected.com"
