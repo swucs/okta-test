@@ -10,7 +10,7 @@ server:
 
 auth0:
   toyota:
-    domain: "toyota-kr-test.us.auth0.com
+    domain: "toyota-kr-test.us.auth0.com"
     client-id: "Edwip0uwJvMZaZTDYlGqQl7S815AuZQK"
     redirect-uri: "https://evcar-tms.obigo.com/auth0-test?mode=toyota"
     audience: "https://24dcm-dev-tmcif.tmkr-connected.com"
