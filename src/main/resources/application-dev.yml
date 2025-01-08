@@ -5,7 +5,7 @@ spring:
 server:
   port: 8098
   servlet:
-    context-path: auth0-test
+    context-path: /auth0-test
 
 
 auth0:
