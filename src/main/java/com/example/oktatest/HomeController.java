@@ -33,6 +33,32 @@ public class HomeController {
     private String lexusAudience;
 
 
+    //stg
+    @Value("${auth0.toyota-stg.domain}")
+    private String toyotaStgDomain;
+
+    @Value("${auth0.toyota-stg.client-id}")
+    private String toyotaStgClientId;
+
+    @Value("${auth0.toyota-stg.redirect-uri}")
+    private String toyotaStgRedirectUri;
+
+    @Value("${auth0.toyota-stg.audience}")
+    private String toyotaStgAudience;
+
+    @Value("${auth0.lexus-stg.domain}")
+    private String lexusStgDomain;
+
+    @Value("${auth0.lexus-stg.client-id}")
+    private String lexusStgClientId;
+
+    @Value("${auth0.lexus-stg.redirect-uri}")
+    private String lexusStgRedirectUri;
+
+    @Value("${auth0.lexus-stg.audience}")
+    private String lexusStgAudience;
+
+
 
     @GetMapping(value = "/")
     public String home(Model model) {
@@ -46,5 +72,21 @@ public class HomeController {
         model.addAttribute("lexusAudience", lexusAudience);
 
         return "index";
+    }
+
+
+
+    @GetMapping(value = "/stg")
+    public String stg(Model model) {
+        model.addAttribute("toyotaDomain", toyotaStgDomain);
+        model.addAttribute("toyotaClientId", toyotaStgClientId);
+        model.addAttribute("toyotaRedirectUri", toyotaStgRedirectUri);
+        model.addAttribute("toyotaAudience", toyotaStgAudience);
+        model.addAttribute("lexusDomain", lexusStgDomain);
+        model.addAttribute("lexusClientId", lexusStgClientId);
+        model.addAttribute("lexusRedirectUri", lexusStgRedirectUri);
+        model.addAttribute("lexusAudience", lexusStgAudience);
+
+        return "stg";
     }
 }
