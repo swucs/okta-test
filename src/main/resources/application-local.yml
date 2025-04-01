@@ -8,22 +8,23 @@ server:
 
 auth0:
   toyota:
-    domain: "toyota-kr-test.us.auth0.com"
-    client-id: "Edwip0uwJvMZaZTDYlGqQl7S815AuZQK"
+    domain: "auth-dev.toyotaconnectapp.com"
+    client-id: "2ZLCaqHKeNXqzqDHHxcq5mPAGdA7cbzU"
     redirect-uri: "http://localhost:8099/?mode=toyota"
-    audience: "https://24dcm-dev-tmcif.tmkr-connected.com"
+    audience: "https://24dcm-tmcif.tmkr-connected.com"
   lexus:
-    domain: "lexus-kr-test.us.auth0.com"
-    client-id: "xKrsdYuvlq4sSvZAy6LB1RKF9EZSx6tB"
+    domain: "auth-dev.lexusconnectapp.com"
+    client-id: "Fn0xeEDTGVebPtbqfEJQ8l1m2HTkQHjS"
     redirect-uri: "http://localhost:8099/?mode=lexus"
-    audience: "https://24dcm-dev-tmcif.tmkr-connected.com"
+    audience: "https://24dcm-tmcif.tmkr-connected.com"
+
   toyota-stg:
     domain: "auth-sta.toyotaconnectapp.com"
     client-id: "EIB0Gqq2O48tmJzOZBQu2hrtMwney1Vf"
-    redirect-uri: "https://evcar-tms.obigo.com/stg?mode=toyota"
-    audience: "https://24dcm-sta-tmcif.tmkr-connected.com"
+    redirect-uri: "http://localhost:8099/stg?mode=toyota"
+    audience: "https://24dcm-tmcif.tmkr-connected.com"
   lexus-stg:
     domain: "auth-sta.lexusconnectapp.com"
     client-id: "LHVuUPFXvy9FWS7Mh0iaBPdMcsuCrwRw"
-    redirect-uri: "https://evcar-tms.obigo.com/stg?mode=lexus"
-    audience: "https://24dcm-sta-tmcif.tmkr-connected.com"
+    redirect-uri: "http://localhost:8099/stg?mode=lexus"
+    audience: "https://24dcm-tmcif.tmkr-connected.com"
