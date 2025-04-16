@@ -28,3 +28,14 @@ auth0:
     client-id: "LHVuUPFXvy9FWS7Mh0iaBPdMcsuCrwRw"
     redirect-uri: "https://evcar-tms.obigo.com/stg?mode=lexus"
     audience: "https://24dcm-tmcif.tmkr-connected.com"
+
+  toyota-prod:
+    domain: "toyota-kr.jp.auth0.com"
+    client-id: "auLv9ZgWcykoQ676jUPnOJh66i1SW4cy"
+    redirect-uri: "https://evcar-tms.obigo.com/prod?mode=toyota"
+    audience: "https://24dcm-tmcif.tmkr-connected.com"
+  lexus-prod:
+    domain: "lexus-kr.jp.auth0.com"
+    client-id: "vw3jni0EErELvg35B4cRsSxKS3so3rBH"
+    redirect-uri: "https://evcar-tms.obigo.com/prod?mode=lexus"
+    audience: "https://24dcm-tmcif.tmkr-connected.com"

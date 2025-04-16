@@ -59,6 +59,32 @@ public class HomeController {
     private String lexusStgAudience;
 
 
+    //prod
+    @Value("${auth0.toyota-prod.domain}")
+    private String toyotaProdDomain;
+
+    @Value("${auth0.toyota-prod.client-id}")
+    private String toyotaProdClientId;
+
+    @Value("${auth0.toyota-prod.redirect-uri}")
+    private String toyotaProdRedirectUri;
+
+    @Value("${auth0.toyota-prod.audience}")
+    private String toyotaProdAudience;
+
+    @Value("${auth0.lexus-prod.domain}")
+    private String lexusProdDomain;
+
+    @Value("${auth0.lexus-prod.client-id}")
+    private String lexusProdClientId;
+
+    @Value("${auth0.lexus-prod.redirect-uri}")
+    private String lexusProdRedirectUri;
+
+    @Value("${auth0.lexus-prod.audience}")
+    private String lexusProdAudience;
+
+
 
     @GetMapping(value = "/")
     public String home(Model model) {
@@ -88,5 +114,20 @@ public class HomeController {
         model.addAttribute("lexusAudience", lexusStgAudience);
 
         return "stg";
+    }
+
+
+    @GetMapping(value = "/prod")
+    public String prod(Model model) {
+        model.addAttribute("toyotaDomain", toyotaProdDomain);
+        model.addAttribute("toyotaClientId", toyotaProdClientId);
+        model.addAttribute("toyotaRedirectUri", toyotaProdRedirectUri);
+        model.addAttribute("toyotaAudience", toyotaProdAudience);
+        model.addAttribute("lexusDomain", lexusProdDomain);
+        model.addAttribute("lexusClientId", lexusProdClientId);
+        model.addAttribute("lexusRedirectUri", lexusProdRedirectUri);
+        model.addAttribute("lexusAudience", lexusProdAudience);
+
+        return "prod";
     }
 }
